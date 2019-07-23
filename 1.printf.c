@@ -10,6 +10,7 @@
 	__typeof(a) temp = a;\
 	a = b; b = temp;\
 }
+
 int main() {
 	int n;
 	char str[100], buff[100], *p = str, *q = buff;
