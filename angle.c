@@ -15,7 +15,6 @@ int main() {
 	bool a = true;
 	scanf("%lf", &angle);
 	printf("%lf", angle * PI / 180);
-	
-	
+		
 	return 0;
 }
