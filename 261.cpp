@@ -6,31 +6,29 @@
  ************************************************************************/
 
 #include <iostream>
+#include <inttypes.h>
 #include <vector>
 using namespace std;
 
 vector<int> vec;
-vector<int>::iterator itr;
 
 void my_insert(int pos, int x) {
-	itr = vec.begin();	
-	vec.insert(itr + pos, x);
+	vec.insert(vec.begin() + pos, x);
 }
 
 void my_delete(int pos) {
-	itr = vec.begin();
-	vec.erase(itr + pos - 1);	
+	vec.erase(vec.begin() + pos - 1);	
 }
 
-void max_si(int pos) {
-	int max = 0, sum = 0;
-	for (int i = 0; i < pos; i++) {
+int max_si(int tail) {
+	int sum = 0, max = INT32_MIN;
+	for (int i = 0; i < tail; i++) {
 		sum += vec[i];
 		if (sum > max) {
 			max = sum;
 		}
 	}
-	cout << max << endl;
+	return max;
 }
 
 int main() {
@@ -45,7 +43,7 @@ int main() {
 		}
 		switch (operat) {
 			case 'I': my_insert(current_pos, x);
-					  ++current_pos;
+					  current_pos++;
 					  break;
 			case 'D': my_delete(current_pos);
 					  --current_pos;
@@ -56,7 +54,11 @@ int main() {
 			case 'R': if (current_pos < vec.size())
 						++current_pos;
 					  break;
-			case 'Q': max_si(current_pos);
+			case 'Q': cout << max_si(x) << endl;
+					  /*for (int i = 0; i < vec.size(); i++) {
+						cout << vec[i] << " ";
+					  }
+					  cout << endl;*/
 					  break;
 		}
 	}
